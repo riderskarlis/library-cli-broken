@@ -15,6 +15,17 @@ $books = [
     ]
 ];
 
+function showAllBooks(&$books) {
+    foreach ($books as $id => $book) {
+        displayBook($id, $book);
+    }
+}
+
+function showBook(&$books) {
+    $id = readline("Enter book id: ");
+    displayBook($id, $books[$id]);
+}
+
 function addBook(&$books) {
     $title = readline("Enter title: ");
     $author = readline("Enter author: ");
@@ -45,15 +56,10 @@ do {
 
     switch ($choice) {
         case 1:
-            foreach ($books as $id => $book) {
-                displayBook($id, $book);
-            }
-
+            showAllBooks($books);
             break;
         case 2:
-            $id = readline("Enter book id: ");
-            displayBook($id, $books[$id]);
-
+            showBook($books);
             break;
         case 3:
             addBook($books);
