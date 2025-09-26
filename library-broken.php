@@ -1,5 +1,7 @@
 <?php
 
+require_once('Book.php');
+
 $books = [
     1 => [
         'title' => 'The Great Gatsby',
@@ -35,6 +37,13 @@ function addBook(&$books) {
     $books[] = ['title' => $title, 'author' => $author, 'status' => 'available'];
 }
 
+function addDebugBook() {
+    $title = readline("Enter title: ");
+    $author = readline("Enter author: ");
+    $a = new Book($title, $author, 'available');
+    print_r($a);
+}
+
 function deleteBook(&$books) {
     $id = readline("Enter book ID you want to delete: ");
     unset($books[$id]);
@@ -42,6 +51,10 @@ function deleteBook(&$books) {
 
 function displayBook($id, $book) {
     echo "ID: {$id} // Title: ". $book['title'] . " // Author: " . $book['author']. " // Status: " . $book['status'] . "\n\n";
+}
+
+function displayDebugBook() {
+    echo $a->display();
 }
 
 function setStatus(&$books) {
@@ -88,6 +101,12 @@ do {
         case 6:
             echo "Goodbye!\n";
             $continue = false;
+            break;
+        case 10:
+            addDebugBook();
+            break;
+        case 11:
+            displayDebugBook();
             break;
         case 13:
             print_r($books); // hidden option to see full $books content
