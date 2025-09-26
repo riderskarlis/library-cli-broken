@@ -17,12 +17,13 @@ $books = [
 
 function addBook(&$books) {
     $title = readline("Enter title: ");
+    $author = readline("Enter author: ");
     $books[] = ['title' => $title, 'author' => $author];
 }
 
-function deleteBook() {
+function deleteBook(&$books) {
     $id = readline("Enter book ID you want to delete: ");
-    unset($bookList[$id]);
+    unset($books[$id]);
 }
 
 function displayBook($id, $book) {
@@ -32,6 +33,7 @@ function displayBook($id, $book) {
 
 echo "\n\nWelcome to the Library\n";
 
+$continue = true;
 do {
     echo "\n\n";
     echo "1 - show all books\n";
